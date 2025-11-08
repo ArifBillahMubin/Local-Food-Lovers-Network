@@ -35,8 +35,8 @@ const Navbar = () => {
                         tabIndex="-1"
                         className="menu fixed menu-sm dropdown-content bg-base-100 rounded-box z-100 mt-3 w-52 p-2 shadow"
                     >
-                        <li>
-                            <NavLink to={"/"}>
+                        <li className='text-lg'>
+                            <NavLink to={"/"} >
                                 <GoHomeFill />
                                 Home
                             </NavLink>
@@ -55,18 +55,18 @@ const Navbar = () => {
             <div className="navbar-center hidden md:flex">
                 <ul className="menu menu-horizontal px-1 gap-10">
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"/"} className="text-[#F39C12] font-semibold text-lg">
                             <GoHomeFill />
                             Home
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"/"} className="text-[#F39C12] font-semibold text-lg">
                             <IoLogoModelS /> All Models
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/"}>
+                        <NavLink to={"/"} className="text-[#F39C12] font-semibold text-lg">
                             <ImBoxAdd /> Add model
                         </NavLink>
                     </li>
