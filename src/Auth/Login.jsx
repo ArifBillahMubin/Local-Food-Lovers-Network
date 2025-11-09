@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { use } from 'react';
+import { FaGoogle } from 'react-icons/fa6';
+import { Link } from 'react-router';
+import { AuthContext } from '../Provider/AuthContext';
 
 const Login = () => {
+    const { signInWithGoogle }= use(AuthContext);
+    const handleGoogleLogin = (e)=>{
+        e.preventDefault();
+        signInWithGoogle()
+        .then(result =>{
+            console.log(result);
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
     return (
         <div class="min-h-screen bg-gradient-to-br from-[#FFF8E7] via-white to-[#FFF0DA] flex items-center justify-center px-4">
             <div class="w-full max-w-md bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl p-8">
 
                 {/* <!-- Logo / Title --> */}
                 <div class="text-center mb-6">
-                    <div class="flex justify-center mb-2">
-                        img
-                    </div>
                     <h2 class="text-3xl font-bold text-[#F39C12]">Welcome Back</h2>
                     <p class="text-sm text-gray-600 mt-1">Login to continue your flavor journey </p>
                 </div>
@@ -45,16 +56,17 @@ const Login = () => {
 
                     {/* <!-- Continue with Google --> */}
                     <button
+                        onClick={handleGoogleLogin}
                         type="button"
                         class="btn w-full bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 flex items-center justify-center gap-2"
                     >
-                        logo
+                        <FaGoogle></FaGoogle>
                         Continue with Google
                     </button>
 
                     <p class="text-center text-sm text-gray-600 mt-3">
                         Don't have an account?
-                        <a href="/register" class="text-[#E67E22] font-semibold hover:underline">Create one</a>
+                        <Link to={'/register'} class="text-[#E67E22] font-semibold hover:underline">Create one</Link>
                     </p>
                 </form>
             </div>
