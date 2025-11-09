@@ -55,6 +55,10 @@ const Navbar = () => {
                                 <GoHomeFill />
                                 Home
                             </NavLink>
+                            <NavLink to={"/addReview"} >
+                                <GoHomeFill />
+                                Add Review
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
@@ -68,6 +72,12 @@ const Navbar = () => {
                         <NavLink to={"/"} className="text-[#F39C12] font-semibold text-lg">
                             <GoHomeFill />
                             Home
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={"/addReview"} className="text-[#F39C12] font-semibold text-lg" >
+                            <GoHomeFill />
+                            Add Review
                         </NavLink>
                     </li>
                 </ul>

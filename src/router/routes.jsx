@@ -3,6 +3,8 @@ import Home from "../pages/Home/Home";
 import MainLayout from "../layouts/MainLayout";
 import Register from "../Auth/Register";
 import Login from "../Auth/Login.Jsx";
+import PrivateRoute from "../Provider/PrivateRoute";
+import AddReview from "../pages/AddReview/AddReview";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -19,6 +21,12 @@ const router = createBrowserRouter([
             {
                 path:'/login',
                 Component:Login
+            },
+            {
+                path:'/addReview',
+                element:<PrivateRoute>
+                    <AddReview></AddReview>
+                </PrivateRoute>
             }
         ]
     }

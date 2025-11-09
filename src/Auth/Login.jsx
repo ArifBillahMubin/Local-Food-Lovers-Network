@@ -1,28 +1,31 @@
 import React, { use, useState } from 'react';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa6';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthContext';
 import toast from 'react-hot-toast';
+import useAxios from '../hooks/useAxios';
 
 
 const Login = () => {
-    const { signInWithGoogle, signInUser } = use(AuthContext);
+    const { signInWithGoogle, signInUser, setUser } = use(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+    const axiosInstance = useAxios();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const signInUserEmail = (e) => {
         e.preventDefault();
         const password = e.target.password.value;
         const email = e.target.email.value;
-        console.log(email,password);
-
+        // console.log(email,password);
         // toast.loading("Login user...", { id: "create-user" });
+        // console.log(email);
 
         signInUser(email, password)
             .then((result) => {
-                console.log(result.user);
+                setUser(result.user)
                 e.target.reset();
-                navigate("/");
+                navigate(`${location?.state ? location.state : '/'}`);
             })
             .catch((error) => {
                 toast.error(error.message);
@@ -33,8 +36,20 @@ const Login = () => {
         e.preventDefault();
         signInWithGoogle()
             .then(result => {
-                console.log(result);
-                navigate('/')
+                setUser(result.user);
+                const newUser = {
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    photoURL: result.user.photoURL
+                }
+
+                axiosInstance.post('/user', newUser)
+                    .then(data => {
+                        if (data.data.insertedId) {
+                            alert('new user crate done..')
+                        }
+                    })
+                navigate(`${location?.state ? location.state : '/'}`);
             })
             .catch(err => {
                 console.log(err)
