@@ -11,6 +11,7 @@ const AddReview = () => {
     const navigate = useNavigate();
     const handleReviewSubmit =(e)=>{
         e.preventDefault();
+        const foodName = e.target.foodName.value;
         const foodImage = e.target.foodImage.value;
         const restaurant = e.target.restaurant.value;
         const location = e.target.location.value;
@@ -26,6 +27,7 @@ const AddReview = () => {
         }
 
         const newReview = {
+            foodName,
             foodImage,
             restaurant,
             location,
@@ -53,6 +55,13 @@ const AddReview = () => {
                 <h2 class="text-3xl font-bold text-[#F39C12] mb-6 text-center">Add Your Review</h2>
 
                 <form onSubmit={handleReviewSubmit} class="space-y-5">
+
+                    {/* food Name  */}
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-1">Food Name</label>
+                        <input name='foodName' type="text" placeholder="type food name" class="input input-bordered w-full border-[#F39C12]/40 focus:ring-2 focus:ring-[#F39C12]" required />
+                    </div>
+
                     {/* food image  */}
                     <div>
                         <label class="block text-gray-700 font-medium mb-1">Food Image URL</label>
