@@ -4,9 +4,10 @@ import { AuthContext } from '../Provider/AuthContext';
 import toast from 'react-hot-toast';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa6';
 import useAxios from '../hooks/useAxios';
+import { User } from 'lucide-react';
 
 const Register = () => {
-    const { createUser, signInWithGoogle, setUser } = use(AuthContext);
+    const { createUser, signInWithGoogle, setUser, updateUserProfile } = use(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
 
     const axiosInstance = useAxios();
@@ -15,13 +16,12 @@ const Register = () => {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        const name = e.target.name.value;
+        const displayName = e.target.name.value;
         const email = e.target.email.value;
         const photoURL = e.target.photoURL.value;
         const password = e.target.password.value;
-
         const confirmPassword = e.target.confirmPassword.value;
-        console.log(name, email, photoURL, password, confirmPassword);
+        // console.log(displayName, email, photoURL, password, confirmPassword);
         // setError("");
 
         if (!/[A-Z]/.test(password)) {
@@ -52,14 +52,26 @@ const Register = () => {
 
         createUser(email, password)
             .then((result) => {
-                console.log(result.user);
-                setUser(result.user)
+                // console.log(result.user);
+                // const user = result.user;
+                // setUser({
+                //     ...user,
+                //     displayName: name,
+                //     photoURL: photoURL
+                // })
+                updateUserProfile(displayName, photoURL)
+                    .then(() => {
+                        setUser({
+                            ...User,
+                            displayName,
+                            photoURL,
+                        });
+                    })
                 const newUser = {
-                    name: name,
+                    name: displayName,
                     email: result.user.email,
                     photoURL: photoURL
                 }
-
                 axiosInstance.post('/user', newUser)
                     .then(data => {
                         if (data.data.insertedId) {
@@ -73,6 +85,7 @@ const Register = () => {
                 console.log(error);
                 toast.error(error.message);
             });
+        
     }
 
     const handleGoogleLogin = (e) => {
@@ -86,12 +99,12 @@ const Register = () => {
                     photoURL: result.user.photoURL
                 }
 
-                axiosInstance.post('/user',newUser)
-                .then(data=>{
-                    if (data.data.insertedId) {
-                        alert('new user crate done..')
-                    }
-                })
+                axiosInstance.post('/user', newUser)
+                    .then(data => {
+                        if (data.data.insertedId) {
+                            alert('new user crate done..')
+                        }
+                    })
 
                 navigate("/");
             })
