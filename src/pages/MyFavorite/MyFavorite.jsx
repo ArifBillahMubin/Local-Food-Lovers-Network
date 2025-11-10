@@ -3,6 +3,7 @@ import useAxios from '../../hooks/useAxios';
 import { AuthContext } from '../../Provider/AuthContext';
 import LoaderSpinner from '../../components/LoaderSpinner/LoaderSpinner';
 import { Link } from 'react-router';
+import Swal from 'sweetalert2';
 
 const MyFavorite = () => {
     const axiosInstance = useAxios();
@@ -19,11 +20,45 @@ const MyFavorite = () => {
                 setLoadingFavorite(false);
             })
     }, [user, setFavorites, axiosInstance])
-    // console.log(favorites,loadingFavorite);
+    console.log(favorites);
 
     if (loadingFavorite) {
         return <LoaderSpinner></LoaderSpinner>
     }
+
+    const handleFavoriteReviewDelete = (_id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosInstance
+                    .delete(`http://localhost:3000/myFavorite/${_id}`)
+                    .then((res) => {
+                        if (res.data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your favorite review has been removed.",
+                                icon: "success"
+                            });
+
+                            // Update local state
+                            const remainingFavorite = favorites.filter(f => f._id !== _id);
+                            setFavorites(remainingFavorite);
+                        }
+                    })
+                    .catch((err) => {
+                        console.error("Error deleting favorite:", err);
+                        Swal.fire("Error!", "Failed to delete favorite.", "error");
+                    });
+            }
+        });
+    };
 
 
     return (
@@ -85,7 +120,7 @@ const MyFavorite = () => {
                                     <td className="text-center space-x-2">
                                         <button
                                             onClick={() =>
-                                                console.log('Remove favorite clicked:', favorite._id)
+                                                handleFavoriteReviewDelete(favorite._id)
                                             }
                                             className="btn border-2 border-red-400 text-red-400 btn-xs"
                                         >
