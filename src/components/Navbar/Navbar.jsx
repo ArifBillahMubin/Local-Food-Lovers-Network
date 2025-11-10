@@ -6,7 +6,7 @@ import { IoLogIn, IoLogOut } from "react-icons/io5";
 import { FaGear, FaUser } from "react-icons/fa6";
 import { LuRotate3D } from "react-icons/lu";
 import { ImBoxAdd } from "react-icons/im";
-import { MdLibraryAdd, MdOutlineReviews, MdReviews } from "react-icons/md";
+import { MdFavorite, MdLibraryAdd, MdOutlineReviews, MdReviews } from "react-icons/md";
 import logo from "../../assets/logo.png"
 import { AuthContext } from '../../Provider/AuthContext';
 
@@ -81,20 +81,29 @@ const Navbar = () => {
                         </NavLink>
                     </li>
                     {
-                        user && 
+                        user &&
                         <li>
                             <NavLink to={"/myReview"} className="text-[#F39C12] font-semibold text-lg" >
-                                <GoHomeFill />
+                                <MdReviews />
                                 My Review's
                             </NavLink>
                         </li>
                     }
                     {
-                        user && 
+                        user &&
                         <li>
                             <NavLink to={"/addReview"} className="text-[#F39C12] font-semibold text-lg" >
                                 <IoMdAddCircle />
                                 Add Review
+                            </NavLink>
+                        </li>
+                    }
+                    {
+                        user &&
+                        <li>
+                            <NavLink to={"/myFavorite"} className="text-[#F39C12] font-semibold text-lg" >
+                                <MdFavorite />
+                                My Favorite
                             </NavLink>
                         </li>
                     }
@@ -142,6 +151,12 @@ const Navbar = () => {
                                     <MdReviews></MdReviews>
                                     My Reviews
                                 </Link>
+                            </li>
+                            <li>
+                                <NavLink to={"/myFavorite"}>
+                                    <MdFavorite />
+                                    My Favorite
+                                </NavLink>
                             </li>
 
                             {/* for theme toggle */}

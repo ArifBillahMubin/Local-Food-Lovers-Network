@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 
 const AddReview = () => {
     const {user} =use(AuthContext);
-    console.log(user)
+    // console.log(user)
     const axiosInstance = useAxios();
     const navigate = useNavigate();
 
@@ -40,7 +40,6 @@ const AddReview = () => {
             createdAt: new Date().toISOString(),  
         };
         console.log(newReview);
-
         axiosInstance.post('/reviews',newReview)
         .then(()=>{
             toast.success("your review is pleased....")
@@ -49,6 +48,8 @@ const AddReview = () => {
         })
 
     }
+
+
     return (
         <div class="min-h-screen bg-gradient-to-br from-[#FFF8E7] via-[#FFF4DE] to-[#FFEFD5] flex flex-col-reverse md:flex-row gap-5  items-center justify-center px-6 py-20 md:p-35">
 

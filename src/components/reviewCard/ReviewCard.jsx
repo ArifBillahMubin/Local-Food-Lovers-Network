@@ -1,12 +1,42 @@
 import React from 'react';
-import { FaRegStar, FaStar, FaStarHalfStroke } from 'react-icons/fa6';
+import { FaHeart, FaRegStar, FaStar, FaStarHalfStroke } from 'react-icons/fa6';
 import { Link } from 'react-router';
+import useAxios from '../../hooks/useAxios';
+import toast from 'react-hot-toast';
 
 const ReviewCard = ({ review, delay }) => {
-    const { foodImage, foodName, restaurant, location, name, rating } = review;
+    const axiosInstance = useAxios();
+    const { foodImage, foodName, restaurant, location, name, email, rating } = review;
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating - fullStars >= 0.5;
     const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+
+    const handleMyFavorite = ()=>{
+        // console.log('click..')
+        const newFavorite = {
+            favoriteReviewCardId: review._id,
+            foodImage,
+            foodName,
+            restaurant,
+            location,
+            name,
+            email
+        }
+        // console.log(newFavorite);
+        // console.log(review)
+        axiosInstance.post('/favorite', newFavorite)
+            .then(data => {
+                console.log(data.data)
+                if (data.data.insertedId) {
+                    toast.success("This review has been successfully added to your favorites! Please check your My Favorites page.")
+                }
+                else if (data.data.message) {
+                    toast.error("You have already added this review to your favorites. Please check your My Favorites page.")
+                }
+            })
+    }
+
     return (
         <div data-aos="fade-up" data-aos-delay={delay} className="bg-white/90 border border-[#F39C12]/20 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col md:flex-row gap-4 p-5">
 
@@ -22,7 +52,15 @@ const ReviewCard = ({ review, delay }) => {
             {/* Review Details */}
             <div className="flex flex-col justify-between w-full md:w-2/3">
                 <div>
-                    <h2 className="text-2xl font-bold text-[#F39C12] mb-1">{foodName}</h2>
+                    <div className='flex justify-between items-center'>
+                        <h2 className="text-2xl font-bold text-[#F39C12] mb-1">{foodName}</h2>
+                        <div onClick={handleMyFavorite}>
+                            <FaHeart
+                                size={35}
+                                className="text-red-500 cursor-pointer hover:scale-110 transition-transform duration-300"
+                            />
+                        </div>
+                    </div>
 
                     <p className="text-gray-700">
                         <span className="font-semibold text-[#E67E22]">Restaurant:</span> {restaurant}

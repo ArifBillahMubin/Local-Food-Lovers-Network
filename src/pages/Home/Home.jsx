@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 import Banner from '../../components/Banner/Banner';
 import TopRatedReviewCard from '../../components/TopRatedCard/TopRatedReviewCard';
 import { useEffect } from 'react';
@@ -44,12 +44,22 @@ const Home = () => {
 
 
             {/* top picks section  */}
-            <div className='py-20'>
+            <div className='py-20 w-11/12 mx-auto'>
                 <h1 className='text-center text-4xl text-[#F39C12] font-semibold'>Top Picks by Food Lovers</h1>
-                <div className='w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-10'>
+                <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-10'>
                     {
                         latestReviews.map((review,idx) => <TopRatedReviewCard key={review._id} review={review} delay={idx * 50}></TopRatedReviewCard>)
                     }
+                </div>
+                <div className="flex items-center justify-center my-10">
+                    <div className="w-full h-px bg-[#F39C12]"></div>
+                    <Link
+                        to="/allReviews"
+                        className="mx-4 px-6 py-2 btn btn-primary  text-white font-semibold rounded-full shadow-md"
+                    >
+                        Show All
+                    </Link>
+                    <div className="w-full h-px bg-[#F39C12]"></div>
                 </div>
             </div>
 

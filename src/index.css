@@ -41,6 +41,11 @@
   @apply opacity-90;
 }
 
+a.active{
+  background-color: #F39C12;
+  color: white;
+}
+
 
 *{
   font-family: "Inter", sans-serif;

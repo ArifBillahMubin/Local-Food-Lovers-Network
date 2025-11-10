@@ -11,6 +11,7 @@ import EditReview from "../pages/EditReview/EditReview";
 import ViewDetail from "../pages/ViewDetails/ViewDetail";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import LoaderSpinner from "../components/LoaderSpinner/LoaderSpinner";
+import MyFavorite from "../pages/MyFavorite/MyFavorite";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -64,6 +65,12 @@ const router = createBrowserRouter([
                 </PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:3000/reviews/${params.id}`),
                 hydrateFallbackElement: <LoaderSpinner></LoaderSpinner>
+            },
+            {
+                path:'/myFavorite',
+                element:<PrivateRoute>
+                    <MyFavorite></MyFavorite>
+                </PrivateRoute>
             }
         ]
     }
