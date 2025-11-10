@@ -3,18 +3,32 @@ import { AuthContext } from '../../Provider/AuthContext';
 import useAxios from '../../hooks/useAxios';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router';
+import LoaderSpinner from '../../components/LoaderSpinner/LoaderSpinner';
 
 const MyReview = () => {
     const { user } = use(AuthContext);
     const axiosInstance = useAxios();
     const [myReview, setReview] = useState([]);
+    const [loadingReviews, setLoadingReviews] = useState(true);
 
     useEffect(() => {
+        setLoadingReviews(true);
         axiosInstance.get(`http://localhost:3000/myReviews?email=${user.email}`)
             .then((data) => {
                 setReview(data.data)
+                setLoadingReviews(false);
             })
     }, [user, setReview, axiosInstance])
+    console.log(loadingReviews);
+
+    if (loadingReviews) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <LoaderSpinner></LoaderSpinner>
+            </div>
+        );
+    }
+
 
     //for delete 
     const handleReviewDelete = (_id) => {

@@ -4,6 +4,7 @@ import TopRatedReviewCard from '../../components/TopRatedCard/TopRatedReviewCard
 import { useEffect } from 'react';
 import Aos from 'aos';
 import "aos/dist/aos.css";
+import Footer from '../../components/Footer/Footer';
 
 const Home = () => {
     const latestReviews = useLoaderData();
@@ -53,7 +54,7 @@ const Home = () => {
             </div>
 
             {/* ---  Meet Our Top Foodies --- */}
-            <section data-aos="fade-up" className="mb-20 py-20 bg-gradient-to-br from-[#FFF8E7] via-white to-[#FFEFD5]">
+            <section data-aos="fade-up" className=" py-20 bg-gradient-to-br from-[#FFF8E7] via-white to-[#FFEFD5]">
                 <div className="w-11/12 mx-auto text-center mb-12">
                     <h2 className="text-4xl md:text-5xl font-extrabold text-[#F39C12]">
                         Meet Our <span className="text-[#E67E22]">Top Foodies</span> 
@@ -106,7 +107,7 @@ const Home = () => {
             </section>
 
             {/* --- Taste the Stories --- */}
-            <section data-aos="fade-up" className="py-20 bg-gradient-to-br from-[#FFF8E7] via-white to-[#FFEFD5]">
+            <section data-aos="fade-up" className="my-10 md:my-20 py-20 bg-gradient-to-br from-[#FFF8E7] via-white to-[#FFEFD5]">
                 <div className="w-11/12 mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
 
                     {/* Left: Text Content */}
@@ -133,6 +134,45 @@ const Home = () => {
 
                 </div>
             </section>
+
+            {/* --- Newsletter Section --- */}
+            <section
+                data-aos="fade-up"
+                className="relative py-20 bg-cover bg-center"
+                style={{
+                    backgroundImage:
+                        "url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=1600')",
+                }}
+            >
+                <div className="absolute inset-0 bg-black/60"></div>
+
+                <div className="relative z-10 w-11/12 mx-auto text-center text-white space-y-6">
+                    <h2 className="text-4xl md:text-5xl font-extrabold">
+                        Subscribe to Our <span className="text-[#F39C12]">Food Lovers</span> Newsletter 
+                    </h2>
+                    <p className="text-gray-200 max-w-2xl mx-auto text-lg">
+                        Get tasty updates, exclusive discounts, and delicious food stories delivered right to your inbox.
+                    </p>
+
+                    {/* Newsletter Form */}
+                    <div className="flex justify-center mt-6">
+                        <div className="flex w-full max-w-md">
+                            <input
+                                type="email"
+                                placeholder="Enter your email..."
+                                className="flex-grow bg-white px-5 py-3 rounded-l-lg border border-[#F39C12]/40 focus:outline-none focus:ring-2 focus:ring-[#F39C12] text-gray-700"
+                            />
+                            <button
+                                type="button"
+                                className="px-6 py-3 rounded-r-lg bg-gradient-to-r from-[#F39C12] to-[#E67E22] text-white font-semibold hover:brightness-110 transition-all duration-200"
+                            >
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
     );
 };

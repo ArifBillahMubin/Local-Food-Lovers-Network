@@ -1,12 +1,12 @@
 import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
-import { IoLogoModelS } from "react-icons/io";
+import { IoLogoModelS, IoMdAddCircle } from "react-icons/io";
 import { GoHomeFill } from "react-icons/go";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
 import { FaGear, FaUser } from "react-icons/fa6";
 import { LuRotate3D } from "react-icons/lu";
 import { ImBoxAdd } from "react-icons/im";
-import { MdLibraryAdd, MdReviews } from "react-icons/md";
+import { MdLibraryAdd, MdOutlineReviews, MdReviews } from "react-icons/md";
 import logo from "../../assets/logo.png"
 import { AuthContext } from '../../Provider/AuthContext';
 
@@ -76,22 +76,28 @@ const Navbar = () => {
                     </li>
                     <li>
                         <NavLink to={"/allReview"} className="text-[#F39C12] font-semibold text-lg" >
-                            <GoHomeFill />
+                            <MdReviews />
                             All Review's
                         </NavLink>
                     </li>
-                    <li>
-                        <NavLink to={"/myReview"} className="text-[#F39C12] font-semibold text-lg" >
-                            <GoHomeFill />
-                            My Review's
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to={"/addReview"} className="text-[#F39C12] font-semibold text-lg" >
-                            <GoHomeFill />
-                            Add Review
-                        </NavLink>
-                    </li>
+                    {
+                        user && 
+                        <li>
+                            <NavLink to={"/myReview"} className="text-[#F39C12] font-semibold text-lg" >
+                                <GoHomeFill />
+                                My Review's
+                            </NavLink>
+                        </li>
+                    }
+                    {
+                        user && 
+                        <li>
+                            <NavLink to={"/addReview"} className="text-[#F39C12] font-semibold text-lg" >
+                                <IoMdAddCircle />
+                                Add Review
+                            </NavLink>
+                        </li>
+                    }
                 </ul>
             </div>
             <div className="navbar-end gap-3 ">
