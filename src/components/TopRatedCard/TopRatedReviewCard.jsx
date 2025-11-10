@@ -1,4 +1,5 @@
 import { FaRegStar, FaStar, FaStarHalfStroke } from "react-icons/fa6";
+import { Link } from "react-router";
 
 const TopRatedReviewCard = ({ review, delay }) => {
     const { foodImage, foodName, restaurant, location, name, rating } = review;
@@ -52,9 +53,9 @@ const TopRatedReviewCard = ({ review, delay }) => {
                     </div>
                     {/* Action Button */}
                     <div className="card-actions justify-end mt-4">
-                        <button className="btn btn-primary border-none text-white font-semibold shadow-md ">
+                        <Link to={`/viewDetail/${review._id}`} className="btn btn-primary border-none text-white font-semibold shadow-md ">
                             View Details
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
