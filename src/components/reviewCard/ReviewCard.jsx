@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { use } from 'react';
 import { FaHeart, FaRegStar, FaStar, FaStarHalfStroke } from 'react-icons/fa6';
 import { Link } from 'react-router';
 import useAxios from '../../hooks/useAxios';
 import toast from 'react-hot-toast';
+import { AuthContext } from '../../Provider/AuthContext';
 
 const ReviewCard = ({ review, delay }) => {
     const axiosInstance = useAxios();
+    const {user} = use(AuthContext);
+    console.log(user.email);
     const { foodImage, foodName, restaurant, location, name, email, rating } = review;
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating - fullStars >= 0.5;
@@ -21,7 +24,8 @@ const ReviewCard = ({ review, delay }) => {
             restaurant,
             location,
             name,
-            email
+            email,
+            userEmail: user.email
         }
         // console.log(newFavorite);
         // console.log(review)

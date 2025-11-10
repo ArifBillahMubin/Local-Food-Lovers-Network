@@ -19,7 +19,7 @@ const MyReview = () => {
                 setLoadingReviews(false);
             })
     }, [user, setReview, axiosInstance])
-    console.log(loadingReviews);
+    // console.log(loadingReviews);
 
     if (loadingReviews) {
         return (
@@ -62,10 +62,13 @@ const MyReview = () => {
         });
     }
 
-    console.log(myReview);
+    // console.log(myReview);
     return (
         <div className='my-40'>
             <div className="overflow-x-auto w-11/12 mx-auto my-10">
+                <h2 className="text-3xl font-semibold text-center text-[#F39C12] mb-8">
+                    My Review's
+                </h2>
                 <table className="table bg-white/90 border border-[#F39C12]/30 shadow-md rounded-xl overflow-hidden">
                     {/* Head */}
                     <thead className="bg-gradient-to-r from-[#F39C12] to-[#E67E22] text-white text-sm">
@@ -79,25 +82,16 @@ const MyReview = () => {
                         </tr>
                     </thead>
 
-
-                    {/* "_id": "6910f166b7962e1023a4fd58",
-                    "foodImage": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
-                    "foodName": "Beef Cheese Burger",
-                    "restaurant": "Burger House",
-                    "location": "Dhaka, Bangladesh",
-                    "rating": 4.7,
-                    "review": "Juicy patty, melty cheese, and a soft bun. Totally worth it!",
-                    "name": "Md. Arif Billah Mubin",
-                    "email": "arifbillah0909@gmail.com",
-                    "photoURL": "https://randomuser.me/api/portraits/men/32.jpg",
-                    "createdAt": "2025-11-09T19:10:01.000Z" */}
-
-
                     {/* Body */}
                     <tbody className="text-gray-700">
                         {/* Row 1 */}
-                        {
-                            myReview.map((review, index) =>
+                        {myReview.length === 0 ? (
+                            <tr>
+                                <td colSpan="4" className="text-center py-10 text-gray-500 italic">
+                                    No favorite reviews found.
+                                </td>
+                            </tr>
+                        ) :(myReview.map((review, index) =>
                                 <tr key={review._id} className="hover:bg-[#FFF8E7] transition-all">
                                     <td>{index + 1}</td>
                                     <td>
@@ -122,7 +116,7 @@ const MyReview = () => {
                                         </button>
                                     </td>
                                 </tr>
-                            )
+                            ))
                         }
                     </tbody>
 
