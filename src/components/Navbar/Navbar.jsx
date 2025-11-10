@@ -55,10 +55,31 @@ const Navbar = () => {
                                 <GoHomeFill />
                                 Home
                             </NavLink>
-                            <NavLink to={"/addReview"} >
-                                <GoHomeFill />
-                                Add Review
+                            <NavLink to={"/allReview"} >
+                                <MdReviews />
+                                All Review's
                             </NavLink>
+                            {
+                                user &&
+                                <NavLink to={"/myReview"} >
+                                    <MdReviews />
+                                    My Review's
+                                </NavLink>
+                            }
+                            {
+                                user &&
+                                <NavLink to={"/addReview"} >
+                                    <IoMdAddCircle />
+                                    Add Review
+                                </NavLink>
+                            }
+                            {
+                                user &&
+                                <NavLink to={"/myFavorite"} >
+                                    <MdFavorite />
+                                    My Favorite
+                                </NavLink>
+                            }
                         </li>
                     </ul>
                 </div>
@@ -153,10 +174,10 @@ const Navbar = () => {
                                 </Link>
                             </li>
                             <li>
-                                <NavLink to={"/myFavorite"}>
+                                <Link to={"/myFavorite"}>
                                     <MdFavorite />
                                     My Favorite
-                                </NavLink>
+                                </Link>
                             </li>
 
                             {/* for theme toggle */}

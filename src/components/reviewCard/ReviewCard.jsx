@@ -8,7 +8,7 @@ import { AuthContext } from '../../Provider/AuthContext';
 const ReviewCard = ({ review, delay }) => {
     const axiosInstance = useAxios();
     const {user} = use(AuthContext);
-    console.log(user.email);
+    // console.log(user.email);
     const { foodImage, foodName, restaurant, location, name, email, rating } = review;
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating - fullStars >= 0.5;
@@ -31,7 +31,7 @@ const ReviewCard = ({ review, delay }) => {
         // console.log(review)
         axiosInstance.post('/favorite', newFavorite)
             .then(data => {
-                console.log(data.data)
+                // console.log(data.data)
                 if (data.data.insertedId) {
                     toast.success("This review has been successfully added to your favorites! Please check your My Favorites page.")
                 }

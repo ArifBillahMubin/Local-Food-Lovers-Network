@@ -1,35 +1,103 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
-import TopRatedReviewCard from '../../components/TopRatedCard/TopRatedReviewCard';
 import ReviewCard from '../../components/reviewCard/ReviewCard';
 import Aos from 'aos';
-import "aos/dist/aos.css";
+import 'aos/dist/aos.css';
+import useAxios from '../../hooks/useAxios';
+import LoaderSpinner from '../../components/LoaderSpinner/LoaderSpinner';
 
 const AllReview = () => {
     const allReviews = useLoaderData();
-    console.log(allReviews);
+    const [loading, setLoading] = useState(false);
+    const [reviews, setReviews] = useState([]);
+    const axiosInstance = useAxios();
 
     useEffect(() => {
         Aos.init({
             duration: 1000,
-            easing: "ease-in-out",
+            easing: 'ease-in-out',
             once: true,
             offset: 120,
         });
     }, []);
 
     useEffect(() => {
-        if (allReviews && allReviews.length > 0) {
-            Aos.refreshHard();
-        }
+        if (allReviews && allReviews.length > 0) Aos.refresh();
     }, [allReviews]);
 
+    const handleSearch =  (e) => {
+        const search_text = e.target.value.trim();
+        setLoading(true);
+
+        if (!search_text) {
+            setReviews([]); 
+            setLoading(false);
+            return;
+        }
+
+        axiosInstance.get(`/search?search=${search_text}`)
+        .then(data=>{
+            setReviews(data.data);
+            setLoading(false);
+        })
+    };
+
+    const displayedReviews = reviews.length > 0 ? reviews : allReviews;
+
     return (
-        <div className='w-11/12 mx-auto'>
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 my-40'>
-                {
-                    allReviews.map((review, idx) => <ReviewCard key={review._id} review={review} delay={idx * 30}></ReviewCard>)
-                }
+        <div className="w-11/12 mx-auto my-32">
+            <h1 className="text-4xl font-semibold text-center text-[#F39C12] mb-6">
+                Explore All Food Reviews 
+            </h1>
+
+            <div className="flex justify-center mb-12">
+                <div className="relative w-full max-w-md">
+                    <input
+                        type="text"
+                        name="search"
+                        onChange={handleSearch}
+                        placeholder="Search by food name..."
+                        className="w-full rounded-full border border-[#F39C12]/40 pl-12 pr-4 py-3 
+                       text-gray-700 placeholder-gray-400 shadow-sm
+                       focus:outline-none focus:ring-2 focus:ring-[#F39C12]
+                       transition-all duration-300"
+                    />
+                    <svg
+                        className="absolute left-4 top-3.5 h-5 w-5 text-gray-400"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                    >
+                        <g
+                            strokeLinejoin="round"
+                            strokeLinecap="round"
+                            strokeWidth="2.2"
+                            fill="none"
+                            stroke="currentColor"
+                        >
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            {loading && (
+                <LoaderSpinner></LoaderSpinner>
+            )}
+
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {displayedReviews.length > 0 ? (
+                    displayedReviews.map((review, idx) => (
+                        <ReviewCard key={review._id} review={review} delay={idx * 30} />
+                    ))
+                ) : (
+                    !loading && (
+                        <p className="text-center text-gray-500 italic col-span-2">
+                            No reviews found 
+                        </p>
+                    )
+                )}
             </div>
         </div>
     );
