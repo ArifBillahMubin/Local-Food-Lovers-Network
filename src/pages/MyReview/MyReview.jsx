@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthContext';
 import useAxios from '../../hooks/useAxios';
+import Swal from 'sweetalert2';
 
 const MyReview = () => {
     const { user } = use(AuthContext);
@@ -13,6 +14,38 @@ const MyReview = () => {
                 setReview(data.data)
             })
     }, [user, setReview, axiosInstance])
+
+    //for delete 
+    const handleReviewDelete = (_id) => {
+        console.log(_id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosInstance.delete(`http://localhost:3000/reviews/${_id}`)
+                .then(data=>{
+                    // console.log(data.data.deletedCount);
+                    if (data.data.deletedCount){
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                        const remainingReviews = myReview.filter(review => review._id !== _id);
+                        setReview(remainingReviews);
+                    }
+                })
+
+                
+            }
+        });
+    }
 
     console.log(myReview);
     return (
@@ -69,7 +102,7 @@ const MyReview = () => {
                                         <button className="btn btn-xs bg-[#F39C12] hover:bg-[#E67E22] text-white border-none">
                                             Edit
                                         </button>
-                                        <button className="btn border-2 border-red-400 text-red-400 btn-xs">
+                                        <button onClick={() => handleReviewDelete(review._id)} className="btn border-2 border-red-400 text-red-400 btn-xs">
                                             Delete
                                         </button>
                                     </td>

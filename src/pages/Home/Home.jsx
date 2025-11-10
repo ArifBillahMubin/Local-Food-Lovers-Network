@@ -33,7 +33,7 @@ const Home = () => {
                 <h1 className='text-center text-4xl text-[#F39C12] font-semibold'>Top Picks by Food Lovers</h1>
                 <div className='w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-10'>
                     {
-                        latestReviews.map((review,idx) => <TopRatedReviewCard key={review._id} review={review} delay={idx * 150}></TopRatedReviewCard>)
+                        latestReviews.map((review,idx) => <TopRatedReviewCard key={review._id} review={review} delay={idx * 50}></TopRatedReviewCard>)
                     }
                 </div>
             </div>

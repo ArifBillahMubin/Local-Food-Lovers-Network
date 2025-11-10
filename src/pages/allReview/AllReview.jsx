@@ -28,7 +28,7 @@ const AllReview = () => {
         <div className='w-11/12 mx-auto'>
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 my-40'>
                 {
-                    allReviews.map((review, idx) => <ReviewCard key={review._id} review={review} delay={idx * 150}></ReviewCard>)
+                    allReviews.map((review, idx) => <ReviewCard key={review._id} review={review} delay={idx * 30}></ReviewCard>)
                 }
             </div>
         </div>

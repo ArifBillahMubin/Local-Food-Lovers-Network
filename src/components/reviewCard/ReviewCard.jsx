@@ -46,7 +46,7 @@ const ReviewCard = ({ review, delay }) => {
                             <FaRegStar key={`empty-${i}`} className="text-gray-300 text-lg" />
                         ))}
 
-                        <p className="text-sm text-gray-600 ml-2">{rating.toFixed(1)}</p>
+                        <p className="text-sm text-gray-600 ml-2">{rating}</p>
                     </div>
                 </div>
 

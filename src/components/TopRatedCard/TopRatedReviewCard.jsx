@@ -1,7 +1,10 @@
+import { FaRegStar, FaStar, FaStarHalfStroke } from "react-icons/fa6";
 
 const TopRatedReviewCard = ({ review, delay }) => {
     const { foodImage, foodName, restaurant, location, name, rating } = review;
-
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating - fullStars >= 0.5;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
     return (
         <div data-aos="fade-up" data-aos-delay={delay}>
@@ -32,12 +35,19 @@ const TopRatedReviewCard = ({ review, delay }) => {
                     </div>
 
                     {/* Rating */}
-                    <div className="flex items-center gap-1 mt-3">
-                        <span className="text-[#F39C12] text-xl">⭐</span>
-                        <span className="text-[#F39C12] text-xl">⭐</span>
-                        <span className="text-[#F39C12] text-xl">⭐</span>
-                        <span className="text-[#F39C12] text-xl">⭐</span>
-                        <span className="text-gray-300 text-xl">⭐</span>
+                    <div className="flex items-center gap-1 mt-2">
+                        {Array.from({ length: fullStars }).map((_, i) => (
+                            <FaStar key={`full-${i}`} className="text-[#F39C12] text-lg" />
+                        ))}
+
+                        {hasHalfStar && (
+                            <FaStarHalfStroke className="text-[#F39C12] text-lg" />
+                        )}
+
+                        {Array.from({ length: emptyStars }).map((_, i) => (
+                            <FaRegStar key={`empty-${i}`} className="text-gray-300 text-lg" />
+                        ))}
+
                         <p className="text-sm text-gray-600 ml-2">{rating}</p>
                     </div>
                     {/* Action Button */}
