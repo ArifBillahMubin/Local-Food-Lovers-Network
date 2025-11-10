@@ -9,7 +9,7 @@ const AddReview = () => {
     console.log(user)
     const axiosInstance = useAxios();
     const navigate = useNavigate();
-    
+
     const handleReviewSubmit =(e)=>{
         e.preventDefault();
         const foodName = e.target.foodName.value;
@@ -60,37 +60,37 @@ const AddReview = () => {
                     {/* food Name  */}
                     <div>
                         <label class="block text-gray-700 font-medium mb-1">Food Name</label>
-                        <input name='foodName' type="text" placeholder="type food name" class="input input-bordered w-full border-[#F39C12]/40 focus:ring-2 focus:ring-[#F39C12]" required />
+                        <input name='foodName' type="text" placeholder="type food name" class="input input-bordered w-full border-[#F39C12]/40 focus:ring-2 focus:outline-none focus:ring-[#F39C12]" required />
                     </div>
 
                     {/* food image  */}
                     <div>
                         <label class="block text-gray-700 font-medium mb-1">Food Image URL</label>
-                        <input name='foodImage' type="text" placeholder="Paste food image link" class="input input-bordered w-full border-[#F39C12]/40 focus:ring-2 focus:ring-[#F39C12]" required/>
+                        <input name='foodImage' type="text" placeholder="Paste food image link" class="input input-bordered w-full border-[#F39C12]/40 focus:ring-2 focus:outline-none focus:ring-[#F39C12]" required/>
                     </div>
 
                     {/* RestaurantName  */}
                     <div>
                         <label class="block text-gray-700 font-medium mb-1">Restaurant Name</label>
-                        <input name='restaurant' type="text" placeholder="Restaurant name" class="input input-bordered w-full border-[#F39C12]/40 focus:ring-2 focus:ring-[#F39C12]" required/>
+                        <input name='restaurant' type="text" placeholder="Restaurant name" class="input input-bordered w-full border-[#F39C12]/40 focus:ring-2 focus:outline-none focus:ring-[#F39C12]" required/>
                     </div>
 
                     {/* location  */}
                     <div>
                         <label class="block text-gray-700 font-medium mb-1">Location</label>
-                        <input name='location' type="text" placeholder="City or area" class="input input-bordered w-full border-[#F39C12]/40 focus:ring-2 focus:ring-[#F39C12]" required/>
+                        <input name='location' type="text" placeholder="City or area" class="input input-bordered w-full border-[#F39C12]/40 focus:ring-2 focus:outline-none focus:ring-[#F39C12]" required/>
                     </div>
 
                     {/* rating */}
                     <div>
                         <label class="block text-gray-700 font-medium mb-1">Star Rating</label>
-                        <input name='rating' type="" placeholder="Rate between 1 to 5" class="input input-bordered w-full border-[#F39C12]/40 focus:ring-2 focus:ring-[#F39C12]" required/>
+                        <input name='rating' type="" placeholder="Rate between 1 to 5" class="input input-bordered w-full border-[#F39C12]/40 focus:ring-2 focus:outline-none focus:ring-[#F39C12]" required/>
                     </div>
 
                     {/* review  */}
                     <div>
                         <label class="block text-gray-700 font-medium mb-1">Your Review</label>
-                        <textarea name='review' rows="4" placeholder="Write your experience..." class="textarea textarea-bordered w-full border-[#F39C12]/40 focus:ring-2 focus:ring-[#F39C12]" required></textarea >
+                        <textarea name='review' rows="4" placeholder="Write your experience..." class="textarea textarea-bordered w-full border-[#F39C12]/40 focus:ring-2 focus:outline-none focus:ring-[#F39C12]" required></textarea >
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

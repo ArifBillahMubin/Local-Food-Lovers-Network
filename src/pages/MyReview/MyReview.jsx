@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthContext';
 import useAxios from '../../hooks/useAxios';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router';
 
 const MyReview = () => {
     const { user } = use(AuthContext);
@@ -99,9 +100,9 @@ const MyReview = () => {
                                     <td>{review.restaurant}</td>
                                     <td>{review.createdAt.split("T")[0]}</td>
                                     <td className="text-center space-x-2">
-                                        <button className="btn btn-xs bg-[#F39C12] hover:bg-[#E67E22] text-white border-none">
+                                        <Link to={`/editReview/${review._id}`} className="btn btn-xs bg-[#F39C12] hover:bg-[#E67E22] text-white border-none">
                                             Edit
-                                        </button>
+                                        </Link>
                                         <button onClick={() => handleReviewDelete(review._id)} className="btn border-2 border-red-400 text-red-400 btn-xs">
                                             Delete
                                         </button>
