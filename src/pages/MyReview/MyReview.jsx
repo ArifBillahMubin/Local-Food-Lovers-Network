@@ -44,20 +44,20 @@ const MyReview = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axiosInstance.delete(`http://localhost:3000/reviews/${_id}`)
-                .then(data=>{
-                    // console.log(data.data.deletedCount);
-                    if (data.data.deletedCount){
-                        Swal.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
-                            icon: "success"
-                        });
-                        const remainingReviews = myReview.filter(review => review._id !== _id);
-                        setReview(remainingReviews);
-                    }
-                })
+                    .then(data => {
+                        // console.log(data.data.deletedCount);
+                        if (data.data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            const remainingReviews = myReview.filter(review => review._id !== _id);
+                            setReview(remainingReviews);
+                        }
+                    })
 
-                
+
             }
         });
     }
@@ -91,32 +91,32 @@ const MyReview = () => {
                                     No favorite reviews found.
                                 </td>
                             </tr>
-                        ) :(myReview.map((review, index) =>
-                                <tr key={review._id} className="hover:bg-[#FFF8E7] transition-all">
-                                    <td>{index + 1}</td>
-                                    <td>
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle h-14 w-14">
-                                                <img
-                                                    src={review.foodImage}
-                                                    alt=""
-                                                />
-                                            </div>
+                        ) : (myReview.map((review, index) =>
+                            <tr key={review._id} className="hover:bg-[#FFF8E7] transition-all">
+                                <td>{index + 1}</td>
+                                <td>
+                                    <div className="avatar">
+                                        <div className="mask mask-squircle h-14 w-14">
+                                            <img
+                                                src={review.foodImage}
+                                                alt=""
+                                            />
                                         </div>
-                                    </td>
-                                    <td className="font-semibold">{review.foodName}</td>
-                                    <td>{review.restaurant}</td>
-                                    <td>{review.createdAt.split("T")[0]}</td>
-                                    <td className="text-center space-x-2">
-                                        <Link to={`/editReview/${review._id}`} className="btn btn-xs bg-[#F39C12] hover:bg-[#E67E22] text-white border-none">
-                                            Edit
-                                        </Link>
-                                        <button onClick={() => handleReviewDelete(review._id)} className="btn border-2 border-red-400 text-red-400 btn-xs">
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))
+                                    </div>
+                                </td>
+                                <td className="font-semibold">{review.foodName}</td>
+                                <td>{review.restaurant}</td>
+                                <td>{review.createdAt.split("T")[0]}</td>
+                                <td className="text-center space-x-2">
+                                    <Link to={`/editReview/${review._id}`} className="btn btn-xs bg-[#F39C12] hover:bg-[#E67E22] text-white border-none">
+                                        Edit
+                                    </Link>
+                                    <button onClick={() => handleReviewDelete(review._id)} className="btn border-2 border-red-400 text-red-400 btn-xs">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        ))
                         }
                     </tbody>
 

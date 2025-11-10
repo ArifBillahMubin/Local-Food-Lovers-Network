@@ -65,7 +65,7 @@ const MyFavorite = () => {
         <div className="my-40">
             <div className="overflow-x-auto w-11/12 mx-auto my-10">
                 <h2 className="text-3xl font-semibold text-center text-[#F39C12] mb-8">
-                    My Favorite Reviews 
+                    My Favorite Reviews
                 </h2>
 
                 <table className="table bg-white/90 border border-[#F39C12]/30 shadow-md rounded-xl overflow-hidden">
@@ -88,7 +88,7 @@ const MyFavorite = () => {
                                 </td>
                             </tr>
                         ) : (
-                            favorites.map((favorite, index) => 
+                            favorites.map((favorite, index) =>
                                 <tr key={favorite._id} className="hover:bg-[#FFF8E7] transition-all">
                                     {/* Index */}
                                     <td>{index + 1}</td>
