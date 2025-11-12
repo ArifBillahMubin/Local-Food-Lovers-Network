@@ -80,8 +80,8 @@ const Home = () => {
                     {/*  1 */}
                     <div className="bg-white/90 border border-[#F39C12]/20 rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl hover:scale-[1.03] transition-transform duration-300">
                         <img
-                            src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=600"
-                            alt="Foodie 1"
+                            src="https://avatars.githubusercontent.com/u/190505557?v=4"
+                            alt=""
                             className="w-24 h-24 rounded-full border-4 border-[#F39C12] object-cover"
                         />
                         <h3 className="text-xl font-bold text-[#E67E22] mt-4">Arif Billah</h3>
@@ -93,7 +93,7 @@ const Home = () => {
                     <div className="bg-white/90 border border-[#F39C12]/20 rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl hover:scale-[1.03] transition-transform duration-300">
                         <img
                             src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600"
-                            alt="Foodie 2"
+                            alt=""
                             className="w-24 h-24 rounded-full border-4 border-[#F39C12] object-cover"
                         />
                         <h3 className="text-xl font-bold text-[#E67E22] mt-4">Tanvir Hasan</h3>
@@ -104,8 +104,8 @@ const Home = () => {
                     {/*  3 */}
                     <div className="bg-white/90 border border-[#F39C12]/20 rounded-2xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl hover:scale-[1.03] transition-transform duration-300">
                         <img
-                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600"
-                            alt="Foodie 3"
+                            src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=600"
+                            alt=""
                             className="w-24 h-24 rounded-full border-4 border-[#F39C12] object-cover"
                         />
                         <h3 className="text-xl font-bold text-[#E67E22] mt-4">Sadia Rahman</h3>
@@ -166,15 +166,15 @@ const Home = () => {
 
                     {/* Newsletter Form */}
                     <div className="flex justify-center mt-6">
-                        <div className="flex w-full max-w-md">
+                        <div className="w-11/12 max-w-md mx-auto flex flex-col sm:flex-row items-stretch sm:items-center overflow-hidden shadow-sm rounded-lg border border-[#F39C12]/40 bg-white">
                             <input
                                 type="email"
                                 placeholder="Enter your email..."
-                                className="flex-grow bg-white px-5 py-3 rounded-l-lg border border-[#F39C12]/40 focus:outline-none focus:ring-2 focus:ring-[#F39C12] text-gray-700"
+                                className="flex-grow px-5 py-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#F39C12] rounded-t-lg sm:rounded-t-none sm:rounded-l-lg"
                             />
                             <button
                                 type="button"
-                                className="px-6 py-3 rounded-r-lg bg-gradient-to-r from-[#F39C12] to-[#E67E22] text-white font-semibold hover:brightness-110 transition-all duration-200"
+                                className="px-5 py-3 bg-gradient-to-r from-[#F39C12] to-[#E67E22] text-white font-semibold hover:brightness-110 transition-all duration-200 rounded-b-lg sm:rounded-b-none sm:rounded-r-lg"
                             >
                                 Subscribe
                             </button>

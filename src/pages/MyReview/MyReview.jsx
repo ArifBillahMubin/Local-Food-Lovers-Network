@@ -49,7 +49,7 @@ const MyReview = () => {
                         if (data.data.deletedCount) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Your review has been deleted.",
                                 icon: "success"
                             });
                             const remainingReviews = myReview.filter(review => review._id !== _id);
@@ -107,7 +107,7 @@ const MyReview = () => {
                                 <td className="font-semibold">{review.foodName}</td>
                                 <td>{review.restaurant}</td>
                                 <td>{review.createdAt.split("T")[0]}</td>
-                                <td className="text-center space-x-2">
+                                <td className="text-center space-y-2 md:space-x-2">
                                     <Link to={`/editReview/${review._id}`} className="btn btn-xs bg-[#F39C12] hover:bg-[#E67E22] text-white border-none">
                                         Edit
                                     </Link>

@@ -55,7 +55,7 @@ const Navbar = () => {
         <div className="navbar fixed top-0 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 flex justify-between py-2 min-h-0 rounded-full bg-white/10 backdrop-blur-sm text-white shadow-sm mt-4 border border-white/10">
             <div className="navbar-start ">
                 <div className="dropdown ">
-                    <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
+                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5 text-[#E67E22]"
@@ -113,16 +113,16 @@ const Navbar = () => {
                     <img className='w-35 pl-3' src={logo} alt="" />
                 </Link>
             </div>
-            <div className="navbar-center hidden md:flex">
-                <ul className="menu menu-horizontal px-1 gap-10">
+            <div className="navbar-center hidden lg:flex">
+                <ul className="menu menu-horizontal px-1 gap-2">
                     <li>
-                        <NavLink to={"/"} className="text-[#F39C12] font-semibold text-lg">
+                        <NavLink to={"/"} className="text-[#F39C12] font-semibold ">
                             <GoHomeFill />
                             Home
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/allReview"} className="text-[#F39C12] font-semibold text-lg" >
+                        <NavLink to={"/allReview"} className="text-[#F39C12] font-semibold " >
                             <MdReviews />
                             All Review's
                         </NavLink>
@@ -130,7 +130,7 @@ const Navbar = () => {
                     {
                         user &&
                         <li>
-                            <NavLink to={"/myReview"} className="text-[#F39C12] font-semibold text-lg" >
+                            <NavLink to={"/myReview"} className="text-[#F39C12] font-semibold " >
                                 <MdReviews />
                                 My Review's
                             </NavLink>
@@ -139,7 +139,7 @@ const Navbar = () => {
                     {
                         user &&
                         <li>
-                            <NavLink to={"/addReview"} className="text-[#F39C12] font-semibold text-lg" >
+                            <NavLink to={"/addReview"} className="text-[#F39C12] font-semibold " >
                                 <IoMdAddCircle />
                                 Add Review
                             </NavLink>
@@ -148,7 +148,7 @@ const Navbar = () => {
                     {
                         user &&
                         <li>
-                            <NavLink to={"/myFavorite"} className="text-[#F39C12] font-semibold text-lg" >
+                            <NavLink to={"/myFavorite"} className="text-[#F39C12] font-semibold " >
                                 <MdFavorite />
                                 My Favorite
                             </NavLink>
