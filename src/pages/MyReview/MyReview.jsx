@@ -107,11 +107,11 @@ const MyReview = () => {
                                 <td className="font-semibold">{review.foodName}</td>
                                 <td>{review.restaurant}</td>
                                 <td>{review.createdAt.split("T")[0]}</td>
-                                <td className="text-center space-y-2 md:space-x-2">
+                                <td className="text-center space-y-2 md:space-y-0 md:space-x-2">
                                     <Link to={`/editReview/${review._id}`} className="btn btn-xs bg-[#F39C12] hover:bg-[#E67E22] text-white border-none">
                                         Edit
                                     </Link>
-                                    <button onClick={() => handleReviewDelete(review._id)} className="btn border-2 border-red-400 text-red-400 btn-xs">
+                                    <button onClick={() => handleReviewDelete(review._id)} className="btn btn-xs border-2 border-red-400 text-red-400 ">
                                         Delete
                                     </button>
                                 </td>
