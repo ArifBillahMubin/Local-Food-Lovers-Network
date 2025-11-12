@@ -13,7 +13,7 @@ const MyReview = () => {
 
     useEffect(() => {
         setLoadingReviews(true);
-        axiosInstance.get(`http://localhost:3000/myReviews?email=${user.email}`)
+        axiosInstance.get(`https://local-food-lovers-network-server-fawn.vercel.app/myReviews?email=${user.email}`)
             .then((data) => {
                 setReview(data.data)
                 setLoadingReviews(false);
@@ -32,7 +32,7 @@ const MyReview = () => {
 
     //for delete 
     const handleReviewDelete = (_id) => {
-        console.log(_id);
+        // console.log(_id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -43,7 +43,7 @@ const MyReview = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosInstance.delete(`http://localhost:3000/reviews/${_id}`)
+                axiosInstance.delete(`https://local-food-lovers-network-server-fawn.vercel.app/reviews/${_id}`)
                     .then(data => {
                         // console.log(data.data.deletedCount);
                         if (data.data.deletedCount) {

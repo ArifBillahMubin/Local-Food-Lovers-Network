@@ -21,7 +21,7 @@ const AddReview = () => {
         const name = e.target.name.value;
         const email = e.target.email.value;
         const photoURL = e.target.photoURL.value;
-        console.log(foodImage,restaurant,location,rating,review,name,email,photoURL);
+        // console.log(foodImage,restaurant,location,rating,review,name,email,photoURL);
         if (rating < 1 || rating > 5) {
             toast.error("Rating must be a number between 1 and 5");
             return;
@@ -39,7 +39,7 @@ const AddReview = () => {
             photoURL,
             createdAt: new Date().toISOString(),  
         };
-        console.log(newReview);
+        // console.log(newReview);
         axiosInstance.post('/reviews',newReview)
         .then(()=>{
             toast.success("your review is pleased....")

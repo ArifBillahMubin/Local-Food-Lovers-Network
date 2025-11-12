@@ -1,16 +1,50 @@
-# React + Vite
+# Local Food Lovers Network
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Local Food Lovers Network is a full-stack MERN web application that connects food enthusiasts who love exploring local restaurants, street food, and home-cooked meals.  
+Users can share reviews, rate dishes, and save their favorite experiences in a personalized food community.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Live Website  
+Client: [https://your-live-site.netlify.app](https://your-live-site.netlify.app)  
+Server: [https://your-server-url.vercel.app](https://your-server-url.vercel.app)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
+- User Authentication using Firebase (Email/Password and Google Login)
+- Add, Edit, and Delete Reviews (Full CRUD functionality)
+- Favorite System to save and view favorite reviews
+- Top Rated Reviews displayed on the Home Page
+- Fully Responsive Interface built with Tailwind CSS and DaisyUI
+- Custom Toast Notifications for success and error messages
+- 404 Error Page with back-to-home navigation
+- Newsletter subscription section above the footer
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+**Frontend:** React.js, React Router DOM, Tailwind CSS, DaisyUI, Axios, Firebase Authentication  
+**Backend:** Node.js, Express.js, MongoDB (Atlas), dotenv, CORS  
+**Hosting:** Netlify (Client) and Vercel (Server)
+
+---
+
+## Protected Routes
+- /add-review  
+- /my-reviews  
+- /my-favorites  
+
+(Accessible only to logged-in users)
+
+---
+
+
+## Developer
+**Developer:** Arif Billah  
+**Email:** arifbillah.dev@example.com  
+**GitHub:** [https://github.com/yourusername](https://github.com/yourusername)
+
+---
+
+“Good food connects people, and Local Food Lovers Network makes that connection stronger.”

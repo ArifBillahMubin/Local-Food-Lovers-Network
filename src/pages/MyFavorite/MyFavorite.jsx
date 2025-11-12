@@ -14,13 +14,13 @@ const MyFavorite = () => {
 
     useEffect(() => {
         setLoadingFavorite(true);
-        axiosInstance.get(`http://localhost:3000/myFavorite?email=${user.email}`)
+        axiosInstance.get(`https://local-food-lovers-network-server-fawn.vercel.app/myFavorite?email=${user.email}`)
             .then((data) => {
                 setFavorites(data.data)
                 setLoadingFavorite(false);
             })
     }, [user, setFavorites, axiosInstance])
-    console.log(favorites);
+    // console.log(favorites);
 
     if (loadingFavorite) {
         return <LoaderSpinner></LoaderSpinner>
@@ -38,7 +38,7 @@ const MyFavorite = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axiosInstance
-                    .delete(`http://localhost:3000/myFavorite/${_id}`)
+                    .delete(`https://local-food-lovers-network-server-fawn.vercel.app/myFavorite/${_id}`)
                     .then((res) => {
                         if (res.data.deletedCount) {
                             Swal.fire({

@@ -10,7 +10,7 @@ const EditReview = () => {
     const navigate = useNavigate();
 
     const existingReview = useLoaderData();
-    console.log(existingReview);
+    // console.log(existingReview);
 
     const handleEditSubmit = (e) => {
         e.preventDefault();

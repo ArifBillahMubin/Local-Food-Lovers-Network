@@ -54,7 +54,7 @@ const Home = () => {
                 <div className="flex items-center justify-center my-10">
                     <div className="w-full h-px bg-[#F39C12]"></div>
                     <Link
-                        to="/allReviews"
+                        to="/allReview"
                         className="mx-4 px-6 py-2 btn btn-primary  text-white font-semibold rounded-full shadow-md"
                     >
                         Show All
@@ -67,7 +67,7 @@ const Home = () => {
             <section data-aos="fade-up" className=" py-20 bg-gradient-to-br from-[#FFF8E7] via-white to-[#FFEFD5]">
                 <div className="w-11/12 mx-auto text-center mb-12">
                     <h2 className="text-4xl md:text-5xl font-extrabold text-[#F39C12]">
-                        Meet Our <span className="text-[#E67E22]">Top Foodies</span> 
+                        Meet Our <span className="text-[#E67E22]">Top reviewers</span> 
                     </h2>
                     <p className="text-gray-700 text-lg mt-3 max-w-2xl mx-auto">
                         Our most passionate food reviewers - sharing love, taste, and honest bites from every corner 

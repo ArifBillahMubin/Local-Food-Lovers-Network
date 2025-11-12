@@ -1,5 +1,6 @@
 import React, { use, useState } from 'react';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa6';
+import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthContext';
 import toast from 'react-hot-toast';
@@ -44,15 +45,13 @@ const Login = () => {
                 }
 
                 axiosInstance.post('/user', newUser)
-                    .then(data => {
-                        if (data.data.insertedId) {
-                            alert('new user crate done..')
-                        }
+                    .then(() => {
+                        navigate(`${location?.state ? location.state : '/'}`);
                     })
-                navigate(`${location?.state ? location.state : '/'}`);
+                
             })
             .catch(err => {
-                console.log(err)
+                // console.log(err)
                 toast.error(err.message);
             })
     }
@@ -109,9 +108,9 @@ const Login = () => {
                     <button
                         onClick={handleGoogleLogin}
                         type="button"
-                        class="btn w-full bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 flex items-center justify-center gap-2"
+                        class="btn w-full bg-white text-[#F39C12] border-2 border-[#F39C12] hover:bg-gray-100 flex items-center justify-center gap-2"
                     >
-                        <FaGoogle></FaGoogle>
+                        <FcGoogle size={20}/>
                         Continue with Google
                     </button>
 

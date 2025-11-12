@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { FaEye, FaEyeSlash, FaGoogle } from 'react-icons/fa6';
 import useAxios from '../hooks/useAxios';
 import { User } from 'lucide-react';
+import { FcGoogle } from 'react-icons/fc';
 
 const Register = () => {
     const { createUser, signInWithGoogle, setUser, updateUserProfile } = use(AuthContext);
@@ -73,19 +74,17 @@ const Register = () => {
                     photoURL: photoURL
                 }
                 axiosInstance.post('/user', newUser)
-                    .then(data => {
-                        if (data.data.insertedId) {
-                            alert('new user crate done..')
-                        }
+                    .then(() => {
+
                     })
                 e.target.reset();
                 navigate("/");
             })
             .catch((error) => {
-                console.log(error);
+                // console.log(error);
                 toast.error(error.message);
             });
-        
+
     }
 
     const handleGoogleLogin = (e) => {
@@ -109,7 +108,7 @@ const Register = () => {
                 navigate("/");
             })
             .catch(err => {
-                console.log(err)
+                // console.log(err)
                 toast.error(err.message);
             })
     }
@@ -120,7 +119,7 @@ const Register = () => {
 
             </div>
             <div class="min-h-screen bg-gradient-to-br from-[#FFF8E7] via-white to-[#FFF0DA] flex items-center justify-center px-4">
-                <div class="w-full max-w-md bg-white backdrop-blur-md rounded-2xl shadow-2xl p-8 mt-20">
+                <div class="w-full max-w-md bg-white backdrop-blur-md rounded-2xl shadow-2xl p-8 my-40">
 
                     {/* <!-- Logo / Title --> */}
                     <div class="text-center mb-6">
@@ -185,9 +184,9 @@ const Register = () => {
                         <button
                             onClick={handleGoogleLogin}
                             type="button"
-                            class="btn w-full bg-white text-gray-800 border border-gray-300 hover:bg-gray-100 flex items-center justify-center gap-2"
+                            class="btn w-full bg-white text-[#F39C12] border-2 border-[#F39C12] hover:bg-gray-100 flex items-center justify-center gap-2"
                         >
-                            <FaGoogle></FaGoogle>
+                            <FcGoogle size={20} />
                             Continue with Google
                         </button>
 

@@ -9,20 +9,46 @@ import { ImBoxAdd } from "react-icons/im";
 import { MdFavorite, MdLibraryAdd, MdOutlineReviews, MdReviews } from "react-icons/md";
 import logo from "../../assets/logo.png"
 import { AuthContext } from '../../Provider/AuthContext';
+import Swal from 'sweetalert2';
 
 
 const Navbar = () => {
     const { user, signOutUser } = use(AuthContext);
 
     const handleSignOutUser = () => {
-        signOutUser()
-            .then(() => {
-                alert('signOut success..')
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        Swal.fire({
+            title: "Are you sure you want to sign out?",
+            text: "You will need to log in again to access your account.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, sign out!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                signOutUser()
+                    .then(() => {
+                        Swal.fire({
+                            title: "Signed Out!",
+                            text: "You have successfully signed out of your account.",
+                            icon: "success"
+                        })
+                    })
+                // .catch(err => {
+                //     console.log(err)
+                // })
+            }
+        });
     }
+    // const handleSignOutUser = () => {
+    //     signOutUser()
+    //         .then(() => {
+    //             alert('signOut success..')
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+    // }
 
     return (
         // <div className="navbar fixed min-h-0 z-1 shadow-sm rounded-full glass-card max-w-7xl mx-auto mt-4">
