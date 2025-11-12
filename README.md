@@ -6,8 +6,8 @@ Users can share reviews, rate dishes, and save their favorite experiences in a p
 ---
 
 ## Live Website  
-Client: [https://your-live-site.netlify.app](https://your-live-site.netlify.app)  
-Server: [https://your-server-url.vercel.app](https://your-server-url.vercel.app)
+Client: [https://food-lovers-80c58.web.app/](https://food-lovers-80c58.web.app/)  
+Server: [https://local-food-lovers-network-server-fawn.vercel.app/](https://local-food-lovers-network-server-fawn.vercel.app/)
 
 ---
 
@@ -19,14 +19,13 @@ Server: [https://your-server-url.vercel.app](https://your-server-url.vercel.app)
 - Fully Responsive Interface built with Tailwind CSS and DaisyUI
 - Custom Toast Notifications for success and error messages
 - 404 Error Page with back-to-home navigation
-- Newsletter subscription section above the footer
 
 ---
 
 ## Tech Stack
 **Frontend:** React.js, React Router DOM, Tailwind CSS, DaisyUI, Axios, Firebase Authentication  
 **Backend:** Node.js, Express.js, MongoDB (Atlas), dotenv, CORS  
-**Hosting:** Netlify (Client) and Vercel (Server)
+**Hosting:** Firebase (Client) and Vercel (Server)
 
 ---
 
@@ -42,8 +41,8 @@ Server: [https://your-server-url.vercel.app](https://your-server-url.vercel.app)
 
 ## Developer
 **Developer:** Arif Billah  
-**Email:** arifbillah.dev@example.com  
-**GitHub:** [https://github.com/yourusername](https://github.com/yourusername)
+**Email:** arifbillahmubin@gmail.com  
+**GitHub:** [https://github.com/ArifBillahMubin](https://github.com/ArifBillahMubin)
 
 ---
 
