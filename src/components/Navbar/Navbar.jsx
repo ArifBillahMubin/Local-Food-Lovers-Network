@@ -52,7 +52,7 @@ const Navbar = () => {
 
     return (
         // <div className="navbar fixed min-h-0 z-1 shadow-sm rounded-full glass-card max-w-7xl mx-auto mt-4">
-        <div className="navbar fixed top-0 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 flex justify-between py-2 min-h-0 rounded-full bg-white/10 backdrop-blur-sm text-white shadow-sm mt-4 border border-white/10">
+        <div className="navbar fixed top-0 left-1/2 -translate-x-1/2 w-[90%] max-w-7xl z-50 flex justify-between py-2 min-h-0 rounded-full bg-black/50 backdrop-blur-sm text-white shadow-sm mt-4 border border-white/10">
             <div className="navbar-start ">
                 <div className="dropdown ">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
