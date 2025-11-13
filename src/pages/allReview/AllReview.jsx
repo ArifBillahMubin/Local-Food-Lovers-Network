@@ -10,10 +10,10 @@ const AllReview = () => {
     const allReviews = useLoaderData();
     const [loading, setLoading] = useState(false);
     const [reviews, setReviews] = useState([]);
-    const [searchText, setSearchText] = useState(''); 
+    const [searchText, setSearchText] = useState('');
+    const [isSearched, setIsSearched] = useState(false); 
     const axiosInstance = useAxios();
 
-    // --- AOS init ---
     useEffect(() => {
         Aos.init({
             duration: 1000,
@@ -30,29 +30,31 @@ const AllReview = () => {
     const handleSearch = () => {
         const search_text = searchText.trim();
         setLoading(true);
+        setIsSearched(true); 
+
 
         if (!search_text) {
             setReviews([]);
             setLoading(false);
+            setIsSearched(false); 
             return;
         }
 
         axiosInstance.get(`/search?search=${search_text}`)
-            .then(data => {
-                setReviews(data.data);
+            .then(res => {
+                setReviews(res.data);
                 setLoading(false);
             })
             .catch(() => setLoading(false));
     };
 
-    const displayedReviews = reviews.length > 0 ? reviews : allReviews;
+    const displayedReviews = isSearched ? reviews : allReviews;
 
     return (
         <div className="w-11/12 mx-auto my-32">
             <h1 className="text-4xl font-semibold text-center text-[#F39C12] mb-6">
                 Explore All Food Reviews
             </h1>
-
 
             <div className="flex justify-center mb-12">
                 <div className="relative w-full max-w-md flex items-center">
@@ -77,7 +79,7 @@ const AllReview = () => {
                         type="text"
                         name="search"
                         value={searchText}
-                        onChange={(e) => setSearchText(e.target.value)} // only set state
+                        onChange={(e) => setSearchText(e.target.value)}
                         placeholder="Search by food name..."
                         className="w-full rounded-l-full border border-[#F39C12]/40 pl-12 pr-4 py-3 
                         text-gray-700 placeholder-gray-400 shadow-sm
@@ -97,14 +99,16 @@ const AllReview = () => {
             {loading && <LoaderSpinner />}
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {displayedReviews.length > 0 ? (
+                {loading ? (
+                    <LoaderSpinner />
+                ) : displayedReviews.length > 0 ? (
                     displayedReviews.map((review, idx) => (
                         <ReviewCard key={review._id} review={review} delay={idx * 30} />
                     ))
                 ) : (
-                    !loading && (
-                        <p className="text-center text-gray-500 italic col-span-2">
-                            No reviews found
+                    isSearched && (
+                        <p className="text-center text-gray-500 col-span-2">
+                            No reviews found for your search.
                         </p>
                     )
                 )}
